@@ -2,7 +2,7 @@
 
 An MCP (Model Context Protocol) server that helps AI assistants interact with Kedro projects. This server provides tools and capabilities to work with Kedro data catalogs, pipelines, and project structures through various AI coding assistants.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 kedro-mcp/
@@ -23,7 +23,7 @@ kedro-mcp/
 └── tests/
 ```
 
-## 🚀 Installation
+## Installation
 
 ### Prerequisites
 
@@ -56,7 +56,7 @@ uv pip install -e .
 uv pip install kedro-mcp
 ```
 
-## 🔧 Development Setup
+## Development Setup
 
 **Note**: This project requires [uv](https://docs.astral.sh/uv/) for dependency management to support modern dependency groups.
 
@@ -77,7 +77,7 @@ ruff check .
 mypy src/
 ```
 
-## 🤖 Integration with AI Assistants
+## Integration with AI Assistants
 
 ### VS Code
 
@@ -215,13 +215,13 @@ kedro-mcp
 uv run kedro-mcp
 ```
 
-## 🛠️ Available Tools
+## Available Tools
 
 Currently available MCP tools:
 
 - **`health_check`**: Verify the MCP server is running and get server metadata
 
-## 🧪 Testing the Integration
+## Testing the Integration
 
 1. Start your preferred AI assistant (Claude Desktop, VS Code with Claude Code Chat or Copilot)
 2. Ask the assistant to use the `health_check` tool
@@ -235,14 +235,14 @@ Assistant: I'll check the Kedro MCP server status for you.
 The Kedro MCP server is up and running! Version 0.0.1.dev0 is active.
 ```
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Common Issues
 
 1. **Server not starting**: Ensure Python 3.10+ is installed and `kedro-mcp` is installed in your virtual environment
 2. **Tools not available in AI assistant**: Check the MCP server configuration in your AI assistant's settings
 
-## 🤝 Contributing
+## Contributing
 
 **Prerequisites**: Install [uv](https://docs.astral.sh/uv/) for dependency management.
 
@@ -275,11 +275,11 @@ Make sure you have installed the Git hook:
 
 7. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the Apache Software License 2.0. See LICENSE.txt for details.
 
-## 🆘 Support
+## Support
 
 - Report issues: [GitHub Issues](https://github.com/kedro-org/kedro-mcp/issues)
 - MCP Specification: [Model Context Protocol](https://modelcontextprotocol.io/)
