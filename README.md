@@ -247,24 +247,32 @@ The Kedro MCP server is up and running! Version 0.0.1.dev0 is active.
 **Prerequisites**: Install [uv](https://docs.astral.sh/uv/) for dependency management.
 
 1. Fork the repository
+
 2. Create a feature branch: `git checkout -b feature-name`
+
 3. Set up development environment:
+
    ```bash
    uv pip install -e . --group dev
    ```
+
 4. Make your changes and add tests
+
 5. Run linting and tests:
    ```bash
    ruff check .
    mypy src/
    ```
+
 6. This project uses [pre-commit](https://pre-commit.com/) hooks to enforce code quality (linting and type checks) before every commit.
 Make sure you have installed the Git hook:
-Run this once inside your local repo:
-```bash
-pre-commit install
-```
-This creates a .git/hooks/pre-commit script that will automatically run on git commit.
+
+  Run this once inside your local repo:
+    ```bash
+    pre-commit install
+    ```
+  This creates a .git/hooks/pre-commit script that will automatically run on git commit.
+
 7. Submit a pull request
 
 ## 📄 License
