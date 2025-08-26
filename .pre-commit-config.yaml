@@ -10,7 +10,7 @@ repos:
       - id: check-json
       - id: trailing-whitespace
       - id: end-of-file-fixer
-  
+
   - repo: local
     hooks:
       - id: prettier
@@ -21,7 +21,7 @@ repos:
         types: [text]
         additional_dependencies: ["prettier@3.3.3"]
         exclude_types: [markdown, css]
-  
+
   - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
     rev: v2.15.0
     hooks:
@@ -40,7 +40,7 @@ repos:
     hooks:
       - id: mypy
         files: ^kedro-mcp/src/
-  
+
 # Configuration for https://pre-commit.ci/.
 ci:
   autoupdate_schedule: monthly
