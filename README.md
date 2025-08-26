@@ -258,7 +258,14 @@ The Kedro MCP server is up and running! Version 0.0.1.dev0 is active.
    ruff check .
    mypy src/
    ```
-6. Submit a pull request
+6. This project uses [pre-commit](https://pre-commit.com/) hooks to enforce code quality (linting and type checks) before every commit.
+Make sure you have installed the Git hook:
+Run this once inside your local repo:
+```bash
+pre-commit install
+```
+This creates a .git/hooks/pre-commit script that will automatically run on git commit.
+7. Submit a pull request
 
 ## 📄 License
 
