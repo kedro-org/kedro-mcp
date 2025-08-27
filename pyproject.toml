@@ -1,0 +1,95 @@
+[build-system]
+build-backend = "hatchling.build"
+requires = ["hatchling"]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.11.2",
+  "mypy>=1.12.1",
+  "pre-commit>=4.3.0"
+]
+
+[lint.isort]
+known-first-party = ["kedro_mcp"]
+
+[lint.per-file-ignores]
+"{tests,docs,tools,static,features,docs}/*" = ["T201", "S101", "S108"]  # Check print statement for kedro/ only
+"{tests,docs}/*" = ["PLR2004", "PLR0913"]
+
+[project]
+authors = [
+  {name = "Kedro"}
+]
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13"
+]
+dependencies = [
+  "mcp[cli]>=1.6.0",
+  "kedro>=1.0.0"
+]
+description = "MCP server to help AI assistants interact with Kedro"
+dynamic = ["version"]
+keywords = [
+  "Kedro",
+  "MCP",
+  "Model Context Protocol",
+  "GenAI",
+  "AI",
+  "data science",
+  "data engineering"
+]
+license = {text = "Apache Software License (Apache 2.0)"}
+name = "kedro-mcp"
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.10"
+
+[project.scripts]
+"kedro-mcp" = "kedro_mcp:main"
+
+[project.urls]
+Homepage = "https://github.com/kedro-org/kedro-mcp"
+
+[tool.hatch]
+
+[tool.hatch.version]
+path = "src/kedro_mcp/__init__.py"
+
+# -------------------
+# Mypy configuration
+# -------------------
+[tool.mypy]
+disable_error_code = ['misc']
+disallow_untyped_defs = true
+exclude = ['^docs/']
+ignore_missing_imports = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_ignores = true
+
+# -------------------
+# Ruff configuration
+# -------------------
+[tool.ruff]
+line-length = 88
+show-fixes = true
+
+[tool.ruff.format]
+indent-style = "space"
+quote-style = "double"
+lint.ignore = ["E501"]
+lint.select = [
+  "F",  # Pyflakes
+  "W",  # pycodestyle
+  "E",  # pycodestyle
+  "I",  # isort
+  "UP",  # pyupgrade
+  "PL",  # Pylint
+  "T201",  # Print Statement
+  "S",  # flake8-bandit
+  "TCH",  # flake8-type-checking
+  "RUF"  # Ruff-specific rules
+]
