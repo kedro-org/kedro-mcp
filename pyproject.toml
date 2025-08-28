@@ -80,8 +80,10 @@ show-fixes = true
 [tool.ruff.format]
 indent-style = "space"
 quote-style = "double"
-lint.ignore = ["E501"]
-lint.select = [
+
+[tool.ruff.lint]
+ignore = ["E501"]
+select = [
   "F",  # Pyflakes
   "W",  # pycodestyle
   "E",  # pycodestyle
