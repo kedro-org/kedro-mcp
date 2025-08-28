@@ -1,0 +1,31 @@
+from kedro_mcp.schemas.catalog.pandas_schemas import (
+    CSVDatasetSchema,
+    DeltaTableDatasetSchema,
+    ExcelDatasetSchema,
+    FeatherDatasetSchema,
+    GBQQueryDatasetSchema,
+    GBQTableDatasetSchema,
+    GenericDatasetSchema,
+    HDFDatasetSchema,
+    JSONDatasetSchema,
+    ParquetDatasetSchema,
+    SQLQueryDatasetSchema,
+    SQLTableDatasetSchema,
+    XMLDatasetSchema,
+)
+
+DATASET_SCHEMAS = {
+    "pandas.CSVDataset": CSVDatasetSchema,
+    "pandas.DeltaTableDataset": DeltaTableDatasetSchema,
+    "pandas.ExcelDataset": ExcelDatasetSchema,
+    "pandas.FeatherDataset": FeatherDatasetSchema,
+    "pandas.GBQTableDataset": GBQTableDatasetSchema,
+    "pandas.GBQQueryDataset": GBQQueryDatasetSchema,
+    "pandas.GenericDataset": GenericDatasetSchema,
+    "pandas.HDFDataset": HDFDatasetSchema,
+    "pandas.JSONDataset": JSONDatasetSchema,
+    "pandas.ParquetDataset": ParquetDatasetSchema,
+    "pandas.SQLTableDataset": SQLTableDatasetSchema,
+    "pandas.SQLQueryDataset": SQLQueryDatasetSchema,
+    "pandas.XMLDataset": XMLDatasetSchema,
+}
