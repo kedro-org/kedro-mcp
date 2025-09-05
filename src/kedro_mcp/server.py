@@ -48,11 +48,6 @@ def get_kedro_documentation() -> dict:
     """
     return {
         "message": "For comprehensive Kedro documentation, please read the following resources:",
-        "documentation_links": {
-            "kedro": "https://docs.kedro.org/en/stable/llm.txt",
-            "kedro_datasets": "https://docs.kedro.org/projects/kedro-datasets/en/stable/llms.txt", 
-            "kedro_viz": "https://docs.kedro.org/projects/kedro-viz/en/stable/llms.txt"
-        },
         "instructions": [
             "For Kedro framework documentation, see: https://docs.kedro.org/en/stable/llm.txt",
             "For comprehensive kedro-dataset documentation, see: https://docs.kedro.org/projects/kedro-datasets/en/stable/llms.txt",
