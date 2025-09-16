@@ -1,7 +1,8 @@
 [build-system]
-build-backend = "hatchling.build"
-requires = ["hatchling"]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
 
+# Optional dev groups (works nicely with uv; pip will ignore this section)
 [dependency-groups]
 dev = [
   "ruff>=0.11.2",
@@ -9,17 +10,15 @@ dev = [
   "pre-commit>=4.3.0"
 ]
 
-[lint.isort]
-known-first-party = ["kedro_mcp"]
-
-[lint.per-file-ignores]
-"{tests,docs,tools,static,features,docs}/*" = ["T201", "S101", "S108"]  # Check print statement for kedro/ only
-"{tests,docs}/*" = ["PLR2004", "PLR0913"]
-
 [project]
-authors = [
-  {name = "Kedro"}
-]
+name = "kedro-mcp"
+version = "0.1.0"  # bump on release
+description = "MCP server with Kedro prompts and tools (local stdio, zero-install via uvx)."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.10"
+license = { text = "Apache Software License (Apache 2.0)" }
+authors = [{ name = "Kedro" }]
+keywords = ["Kedro", "MCP", "Model Context Protocol", "GenAI", "AI", "data science", "data engineering"]
 classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3.10",
@@ -27,44 +26,35 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.13"
 ]
-dependencies = [
-  "mcp[cli]>=1.6.0",
-  "kedro>=1.0.0"
-]
-description = "MCP server to help AI assistants interact with Kedro"
-dynamic = ["version"]
-keywords = [
-  "Kedro",
-  "MCP",
-  "Model Context Protocol",
-  "GenAI",
-  "AI",
-  "data science",
-  "data engineering"
-]
-license = {text = "Apache Software License (Apache 2.0)"}
-name = "kedro-mcp"
-readme = {file = "README.md", content-type = "text/markdown"}
-requires-python = ">=3.10"
+
+# Single runtime dependency: FastMCP (the server just returns Markdown guidance)
+dependencies = ["fastmcp>=0.3"]
 
 [project.scripts]
-"kedro-mcp" = "kedro_mcp:main"
+# Local stdio entrypoint for MCP clients (run via `uvx kedro-mcp@latest`)
+kedro-mcp = "kedro_mcp.server:main_stdio"
 
 [project.urls]
 Homepage = "https://github.com/kedro-org/kedro-mcp"
 
-[tool.hatch]
+# ---- setuptools package discovery & data ----
+[tool.setuptools]
+package-dir = { "" = "src" }
 
-[tool.hatch.version]
-path = "src/kedro_mcp/__init__.py"
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+# include the Markdown guidance files in the wheel
+kedro_mcp = ["prompts/*.md"]
 
 # -------------------
 # Mypy configuration
 # -------------------
 [tool.mypy]
-disable_error_code = ['misc']
+disable_error_code = ["misc"]
 disallow_untyped_defs = true
-exclude = ['^docs/']
+exclude = ["^docs/"]
 ignore_missing_imports = true
 warn_return_any = true
 warn_unreachable = true
@@ -80,16 +70,25 @@ show-fixes = true
 [tool.ruff.format]
 indent-style = "space"
 quote-style = "double"
-lint.ignore = ["E501"]
-lint.select = [
-  "F",  # Pyflakes
-  "W",  # pycodestyle
-  "E",  # pycodestyle
-  "I",  # isort
+
+[tool.ruff.lint]
+select = [
+  "F",   # Pyflakes
+  "W",   # pycodestyle
+  "E",   # pycodestyle
+  "I",   # isort
   "UP",  # pyupgrade
   "PL",  # Pylint
-  "T201",  # Print Statement
-  "S",  # flake8-bandit
-  "TCH",  # flake8-type-checking
+  "T201",# print statement
+  "S",   # flake8-bandit
+  "TCH", # flake8-type-checking
   "RUF"  # Ruff-specific rules
 ]
+ignore = ["E501"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["kedro_mcp"]
+
+[tool.ruff.lint.per-file-ignores]
+"{tests,docs,tools,static,features}/*" = ["T201", "S101", "S108"]
+"{tests,docs}/*" = ["PLR2004", "PLR0913"]
