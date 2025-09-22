@@ -16,7 +16,7 @@ version = "0.1.0"  # bump on release
 description = "MCP server with Kedro prompts and tools (local stdio, zero-install via uvx)."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.10"
-license = { text = "Apache Software License (Apache 2.0)" }
+license = { file = "LICENSE.txt" }
 authors = [{ name = "Kedro" }]
 keywords = ["Kedro", "MCP", "Model Context Protocol", "GenAI", "AI", "data science", "data engineering"]
 classifiers = [

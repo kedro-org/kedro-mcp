@@ -7,21 +7,52 @@ mcp = FastMCP("kedro")
 # ---------- PROMPT ----------
 @mcp.prompt(
     name="convert_notebook",
-    description="Convert a Jupyter notebook into a production-ready Kedro project (plan → approval → build)."
+    description="Convert a Jupyter notebook into a Kedro project."
 )
 def convert_notebook() -> PromptMessage:
     body = (
         "Call MCP tools `kedro_general_instructions` and `notebook_to_kedro` to load the guidance.\n"
-        "Step 1 — Plan: read the notebook and return a short conversion plan. Wait for \"APPROVED\".\n"
-        "Step 2 — Build: after approval, use a virtual environment (venv) and install Kedro before running any Kedro commands; then create the Kedro project as in the docs. Do not run the pipeline or move data.\n"
+        "Step 1 — Plan: read the notebook and provide a short conversion plan. Wait for \"APPROVED\".\n"
+        "Step 2 — Build: after approval, ensure a virtual environment (venv) is active. "
+        "If not, create one. Install Kedro if it is missing, then follow the plan.\n"
+        "Keep replies concise."
+    )
+    return PromptMessage(
+        role="user",
+        content=TextContent(type="text", text=body)
+    )
+
+@mcp.prompt(
+    name="migration",
+    description="Migrate existing project to the latest Kedro version."
+)
+def migration() -> PromptMessage:
+    body = (
+        "Call MCP tools `kedro_general_instructions` and `project_migration` to load the guidance.\n"
+        "Step 1 — Plan: review the project and suggest a migration plan. Wait for \"APPROVED\".\n"
+        "Step 2 — Build: after approval, ensure a virtual environment (venv) is active. "
+        "If not, create one. Install Kedro if it is missing, then follow the plan.\n"
         "Keep replies concise."
     )
     return PromptMessage(role="user", content=TextContent(type="text", text=body))
+
+@mcp.prompt(
+    name="general_usage",
+    description="General usage instructions for Kedro."
+)
+def general_usage() -> PromptMessage:
+    body = (
+        "Call MCP tools `kedro_general_instructions` to load the guidance.\n"
+        "--- Enter your Kedro-related request here ---"
+    )
+    return PromptMessage(role="user", content=TextContent(type="text", text=body))
+
 
 # ---------- DOCS TOOLS ----------
 DOCS_ROOT = (Path(__file__).parent / "prompts").resolve()
 GENERAL_FILENAME = "kedro_general_instructions.md"
 NB2KEDRO_FILENAME = "notebook_to_kedro.md"
+MIGRATION_FILENAME = "migration.md"
 
 def _read_doc(filename: str) -> str:
     """Read a doc from prompts/ safely and return its text or a clear error."""
@@ -49,6 +80,11 @@ def kedro_general_instructions() -> str:
 def notebook_to_kedro() -> str:
     """Return the contents of prompts/notebook_to_kedro.md."""
     return _read_doc(NB2KEDRO_FILENAME)
+
+@mcp.tool(name="project_migration", description="Return project migration instructions.")
+def project_migration() -> str:
+    """Return the contents of prompts/migration.md."""
+    return _read_doc(MIGRATION_FILENAME)
 
 # ---------- ENTRY POINT ----------
 def main_stdio():

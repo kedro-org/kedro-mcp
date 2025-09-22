@@ -1,7 +1,7 @@
 > Kedro 1.x (pin ≥1.0), kedro-datasets 3.x (pin). Updated: 2025-09-15  
 > Policy level: MUST unless changed via CR.
 
-## Short Context (≤300 tokens)
+## Short Context
 - Goal: Consistent Kedro usage across projects.
 - Pipelines via CLI; nodes are pure, typed; multiple outputs allowed but keep them minimal and named.
 - Prefer file-backed datasets; pin dataset class names to installed `kedro-datasets`.
