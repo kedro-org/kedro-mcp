@@ -1,4 +1,4 @@
-> Kedro 1.x (pin ≥1.0), kedro-datasets 3.x (pin). Updated: 2025-09-15  
+> Kedro 1.x (pin ≥1.0), kedro-datasets 3.x (pin). Updated: 2025-10-01  
 > Policy level: MUST unless changed via CR.
 
 ## Short Context
@@ -18,10 +18,10 @@
 5) Code style: type hints, docstrings; keep modules small and focused.
 
 ## [SECTION:WORKFLOW]
-1) Create project: `kedro new --name <PROJ> --tools=none --example=no`  
+1) To create a new Kedro project, use only this command: `kedro new --name <PROJ> --tools=none --example=no`  
 2) Create pipeline(s): `kedro pipeline create <PIPE>`  
 3) Add nodes in Python, wire IO in `conf/base/catalog.yml`.  
-4) Params in `conf/base/parameters*.yml` (grouped by domain).  
+4) Params in `conf/base/parameters*.yml` (grouped by pipeline).  
 5) Commit small, reviewable diffs; document deviations.
 
 ## [SECTION:CATALOG]
