@@ -54,8 +54,6 @@ For each hardcoded value in the notebook, evaluate:
 - **Data processing**: Batch sizes, outlier detection limits, sampling ratios
 - **Feature engineering**: Correlation thresholds, scaling parameters, binning criteria
 - **Model training**: Train/test splits, cross-validation folds, regularization parameters
-- **Performance tuning**: Processing chunks, memory limits, parallel workers
-- **Visualization**: Figure sizes, color palettes, display parameters
 
 **❌ KEEP HARDCODED** (structural constants unlikely to change):
 - **Data schema**: Column names, expected data types, table structures
