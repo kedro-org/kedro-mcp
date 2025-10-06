@@ -28,6 +28,7 @@
 1) Prefer explicit, file-backed datasets; keep paths relative to project root.  
 2) Versioning: use dataset-level versioning if needed; document rationale.  
 3) Resolve class names from installed `kedro-datasets`; keep extras pinned.
+4) Use **dataset factories** for groups of datasets with similar type/config to reduce repetition.
 
 Example (diff):
 ```diff
@@ -35,6 +36,15 @@ Example (diff):
 +   type: pandas.CSVDataset
 +   filepath: data/01_raw/sales.csv
 ```
+
+Factory example:
+```yaml
+"{name}_data":
+  type: pandas.CSVDataset
+  filepath: data/01_raw/{name}_data.csv
+```
+This single entry resolves any dataset named `factory_data`, `process_data`, etc.
+
 
 ## [SECTION:PARAMS]
 1) Group into files by domain (e.g., `training.yml`, `features.yml`).  

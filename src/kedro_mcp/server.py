@@ -11,7 +11,7 @@ mcp = FastMCP("kedro")
 )
 def convert_notebook() -> PromptMessage:
     body = (
-        "Call MCP tools `notebook_to_kedro` to load the guidance and follow it.\n"
+        "Call MCP tool `notebook_to_kedro` to load the guidance and follow it.\n"
         "Before executing any CLI commands, check that a virtual environment (venv) is active; "
         "if not, propose creating one.\n"
         "Ensure the latest version of Kedro is installed; install it if missing."
