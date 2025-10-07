@@ -30,11 +30,11 @@
 3) Resolve class names from installed `kedro-datasets`; keep extras pinned.
 4) Use **dataset factories** for groups of datasets with similar type/config to reduce repetition.
 
-Example (diff):
-```diff
-+ raw_sales:
-+   type: pandas.CSVDataset
-+   filepath: data/01_raw/sales.csv
+Example:
+```yaml
+raw_sales:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/sales.csv
 ```
 
 Factory example:
@@ -44,7 +44,6 @@ Factory example:
   filepath: data/01_raw/{name}_data.csv
 ```
 This single entry resolves any dataset named `factory_data`, `process_data`, etc.
-
 
 ## [SECTION:PARAMS]
 1) Group into files by domain (e.g., `training.yml`, `features.yml`).  
