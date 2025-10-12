@@ -156,7 +156,10 @@ inputs=["data", "parameters"]
 
 **PIPELINE CREATION STANDARDS:**
 - Use `kedro pipeline create <name>` CLI only (never manual folder creation)
-- Follow standard Kedro project structure
+- Run all `kedro` CLI commands from within an existing Kedro project directory, except for the `kedro new` command
+- Follow standard Kedro project structure:  
+  - Define all node functions in `nodes.py`.  
+  - Create pipelines with these nodes in `pipeline.py`.
 - Register all pipelines in pipeline_registry.py
 
 **DATA ORGANIZATION STANDARDS:**
