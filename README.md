@@ -11,7 +11,7 @@ With Kedro-MCP, your AI assistant understands Kedro workflows, pipelines, and co
 
 ---
 
-## ⚡ Quick Install
+## Quick Install
 
 To enable Kedro MCP tools in your editor, simply **click one of the links below**.  
 Your editor will open automatically, and you’ll just need to confirm installation.
@@ -24,14 +24,14 @@ Once installed, your AI assistant automatically gains access to Kedro-specific M
 
 ---
 
-### 🔗 Helpful references
+### Helpful references
 
 - [VS Code Copilot setup guide](https://code.visualstudio.com/docs/copilot/setup)
 - [Cursor quick-start guide](https://cursor.com/docs/get-started/quickstart)
 
 ---
 
-### 🛠️ Universal MCP configuration (JSON)
+### Universal MCP configuration (JSON)
 
 You can reuse this configuration in any MCP-compatible client (e.g. Copilot, Cursor, Claude, Windsurf):
 
@@ -49,14 +49,14 @@ You can reuse this configuration in any MCP-compatible client (e.g. Copilot, Cur
 
 ---
 
-## 🧠 Examples of Usage
+## Usage
 
 After installation, open **Copilot Chat** (in Agent Mode) or the **Chat panel** in Cursor.  
 Type `/` to see available Kedro MCP prompts.
 
 ---
 
-### Example 1 — Convert a Jupyter Notebook into a Kedro project
+### Convert a Jupyter Notebook into a Kedro project
 
 ```text
 /mcp.Kedro.convert_notebook
@@ -69,17 +69,18 @@ When you run this command, the assistant explicitly calls the Kedro MCP server a
 2. It creates a **conversion plan** (Statement of Work) saved as a `.md` file in your workspace.
 3. You review and approve the plan.
 4. The assistant:
+
    - Ensures a Python virtual environment is active.
    - Installs the latest Kedro if missing.
    - Scaffolds a new project with `kedro new`.
    - Creates pipelines with `kedro pipeline create`.
    - Populates `parameters.yml` and `catalog.yml` based on your notebook.
 
-💡 You can edit the plan, switch environment tools (`uv`, `venv`, `conda`), or ask the assistant to resolve setup errors interactively.
+You can edit the plan, switch environment tools (`uv`, `venv`, `conda`), or ask the assistant to resolve setup errors interactively.
 
 ---
 
-### Example 2 — Migrate a Kedro project
+### Migrate a Kedro project
 
 ```text
 /mcp.Kedro.project_migration
@@ -92,11 +93,11 @@ This prompt walks you through migrating an existing Kedro project to a newer ver
 2. You review and approve the plan.
 3. The assistant ensures a virtual environment is active, installs the correct Kedro version, and applies migration steps.
 
-💡 Use this to get up-to-date migration tips and avoid deprecated patterns.
+Use this to get up-to-date migration tips and avoid deprecated patterns.
 
 ---
 
-### Example 3 — General Kedro guidance
+### General Kedro guidance
 
 ```text
 /mcp.Kedro.general_usage
@@ -105,12 +106,12 @@ This prompt walks you through migrating an existing Kedro project to a newer ver
 Use this prompt for open-ended Kedro questions.  
 The Kedro MCP server returns structured, up-to-date Kedro guidance that your assistant uses to generate realistic code and pipelines.
 
-💡 Example:  
+Example:  
 > “Generate a Kedro project for a time-series forecasting pipeline using Pandas and scikit-learn.”
 
 ---
 
-## 🛠️ Manual Install (from source)
+## Manual Install (from source)
 
 For development or debugging:
 
