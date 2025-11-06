@@ -42,7 +42,10 @@ import matplotlib.pyplot     ✓ → kedro-datasets[matplotlib]
 from sklearn import model   ✓ → scikit-learn
 import plotly.express        ✓ → kedro-datasets[plotly]
 import seaborn              ✓ → seaborn
-# Mark each ✓/✗ - NO package added without explicit import found
+# 1. Mark each ✓/✗ - NO package added without explicit import found
+# 2. When multiple dataset backends are detected, combine extras, e.g.:
+#       kedro-datasets[pandas,matplotlib]
+# 3. Do not infer or install implicit dependencies.
 ```
 
 **PARAMETER DECISION FRAMEWORK:**
@@ -81,6 +84,7 @@ If NO to all questions → Keep hardcoded
 ### 📄 STATEMENT OF WORK STRUCTURE
 
 **SOW must include numbered deliverables (NO implementation guidance):**
+This example illustrates structure and expected clarity only — actual deliverables, datasets, and dependencies must be inferred from the scanned notebook.
 
 ```markdown
 # KEDRO CONVERSION - STATEMENT OF WORK
@@ -88,9 +92,8 @@ If NO to all questions → Keep hardcoded
 
 ### DELIVERABLE 1: PIPELINE IMPLEMENTATION
 1.1 data_processing pipeline
-    - Task 1.1.1: load_raw_data() → outputs: raw_table
-    - Task 1.1.2: clean_data(raw_table, params:data_params) → outputs: cleaned_table  
-    - Task 1.1.3: validate_data(cleaned_table) → outputs: valid_table
+    - Task 1.1.1: clean_data(raw_table, params:data_params) → outputs: cleaned_table  
+    - Task 1.1.2: validate_data(cleaned_table) → outputs: valid_table
     
 1.2 feature_engineering pipeline  
     - Task 1.2.1: build_features(valid_table, params:feature_flags) → outputs: features
@@ -126,9 +129,9 @@ If NO to all questions → Keep hardcoded
 4.3 model_performance → matplotlib.MatplotlibDataset → data/08_reporting/model_performance.png
 
 ### DELIVERABLE 5: DEPENDENCY SPECIFICATIONS
-5.1 kedro-datasets[pandas] (RATIONALE: import pandas found in cell X)
-5.2 kedro-datasets[matplotlib] (RATIONALE: import matplotlib found in cell Y)
-5.3 scikit-learn (RATIONALE: from sklearn import found in cell Z)
+5.1 kedro-datasets[pandas,matplotlib,plotly,seaborn]  
+  (RATIONALE: imports detected for pandas, matplotlib, plotly, seaborn)  
+5.2 scikit-learn (RATIONALE: from sklearn import found in cell Z)
 
 TOTAL DELIVERABLES: X pipelines, Y tasks, Z datasets, W parameters, V visualizations, U dependencies
 ```
