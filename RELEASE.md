@@ -1,3 +1,6 @@
+# Release 0.1.2
+- Improved SOW from notebook conversion — removed load_raw_data task and grouped kedro-datasets[] extras.
+
 # Release 0.1.1
 
 - Enhanced README, fixed broken Cursor link.

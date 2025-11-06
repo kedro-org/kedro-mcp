@@ -12,7 +12,7 @@ dev = [
 
 [project]
 name = "kedro-mcp"
-version = "0.1.0"  # bump on release
+version = "0.1.2"  # bump on release
 description = "MCP server with Kedro prompts and tools (local stdio, zero-install via uvx)."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.10"
